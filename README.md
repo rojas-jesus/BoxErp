@@ -1,8 +1,7 @@
 "# BoxErp" 
 
 # Getting Started
-
-First clone the repository from Github and activate the virtualenv.
+First, clone the repository from Github. Then, navigate to the project directory and activate the virtual environment.
     
 Install project dependencies:
 
@@ -19,3 +18,15 @@ Create a superuser:
 Run the development server:
 
     $ python manage.py runserver
+
+# Maintenance Status
+This repository is no longer actively maintained. The project is in a stable state.
+
+# Testing
+Functional and non-functional tests have been conducted to ensure the quality and reliability of the application.
+
+Note: The unit test suite is limited and only covers a small portion of the core app models and views. Despite this limitation, the application is functioning correctly.
+
+All the tests that are in the tests folder and you can run them locally with:
+
+    $ python manage.py test tests
