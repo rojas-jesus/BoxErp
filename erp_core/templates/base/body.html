@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+{% block body %}
+<!-- el efecto dark mode ,  no solo cambia el fondo sino tambien cambia el color de los botones , volviendolos mas opacos (im plementar dark mode mas adelante ) -->
+<body class="sidebar-mini layout-navbar-fixed">
+	<div class="wrapper">
+		<!-- Header -->
+		{% include 'base/header.html' %}
+
+		<!-- Sidebar -->
+		{% include 'base/sidebar.html' %}
+		
+		<div class="content-wrapper">
+			<div class="content">
+				<div class="container-fluid">
+					{% block content %}
+
+					{% endblock %}
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		{% include 'base/footer.html' %}
+	</div>
+	<!-- Bloque javascript -->
+	{% block javascript %}
+
+	{% endblock %}
+</body>
+{% endblock %}
+

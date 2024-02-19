@@ -1,0 +1,26 @@
+{% extends 'base/list.html' %}
+
+{% block columns  %}
+	<tr>
+		<th scope="col" style="width:10%;">Id</th>
+		<th scope="col" style="width:10%;">Name</th>
+		<th scope="col" style="width:40%;">Description</th>
+		<th scope="col" style="width:10%;">Date</th>
+		<th scope="col" style="width:10%;">User</th>
+	</tr>
+{% endblock %}
+
+{% block rows %}
+	{% for audit in object_list %}
+	<tr>
+		<td> {{ audit.id }} </td>
+		<!-- <td> {# audit.event_type #} </td> -->
+		<td> {{ audit.object_repr }} </td>
+		<td> {{ audit.object_json_repr }} </td>
+		<td> {{ audit.datetime }} </td>
+		<td> {{ audit.user.username }} </td>
+	</tr>
+	{% endfor %}
+{% endblock %}
+
+

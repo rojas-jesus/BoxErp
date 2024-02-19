@@ -1,0 +1,139 @@
+{% extends 'base/body.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block head_extra %}
+
+<!-- Bootstrap Selectpicker -->
+
+<link rel="stylesheet" href="{% static 'lib/bootstrap-select-1.13.14/dist/css/bootstrap-select.min.css' %}">
+<script src="{% static 'lib/bootstrap-select-1.13.14/dist/js/bootstrap-select.min.js' %}"></script>
+
+{% endblock head_extra %}
+
+{% block content %}
+<form method="post" action=".">
+	<div class="card card-default">
+		<div class="card-header">
+			<h3 class="card-title">
+				Create Sale
+			</h3>
+		</div>
+		<!-- /.card-header -->
+
+		<div class="card-body">
+			{% csrf_token %}
+			{{ form.client | add_class:'form-control selectpicker' | attr:"data-live-search=true" }}
+			<br/>
+			{{ form.comment | add_class:'form-control' }}
+			<br/>
+			<br/>
+
+			<div id="form" class="form-row">
+				{{ formset.management_form }}
+				{% for form in formset %}
+				{{form.product | add_class:'form-control col-6' }}
+				{{form.amount | add_class:'form-control col-4'| attr:"min:1"}}
+				{% endfor %}
+				<p> </p> 
+			</div>
+		</div>
+		<!-- /.card-body -->
+		<div class="card-footer">
+			<button type "submit" class="btn btn-primary" >
+				<i class="fa-regular fa-floppy-disk"></i> &nbsp;Save
+			</button>
+			<a href="{% url 'erp:sale-list' %}" class="btn btn-secondary" >
+				<i class="fa-solid fa-xmark"></i> &nbsp; Cancel
+			</a>
+		</div>
+		<!-- /.card footer -->
+	</div>
+</form>
+
+<div class="fixed-bottom">
+	<div class="btn-group btn-group-sm float-right">
+		<button onclick="add_product_and_amount()" class="btn btn-success" >Add</button>
+		<button onclick="delete_product_and_amount()" class="btn btn-warning" >Delete</button>
+		<button onclick="add_product_and_amount_X5()" class="btn btn-success" >Add X5</button>
+		<button onclick="delete_product_and_amount_X5()" class="btn btn-warning" >Delete X5</button>
+	</div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+
+// Function that allows to add more inputs to the formset
+function add_product_and_amount(){
+
+	var form = document.querySelector('#id_form-TOTAL_FORMS')  // Finds and stores the element with ID "id_form-TOTAL_FORMS" in the variable "form"
+
+	// input product
+	var new_product = document.querySelector('#id_form-0-product').cloneNode(true);// clone the entire html element 
+	new_product.name = 'form-'+form.value+'-product';// change the parameter name
+	new_product.id = 'id_form-'+form.value+'-product';// change the parameter id 
+	document.querySelector('#form').appendChild(new_product); // Select the element with the id form and with appendChild add a new element
+	
+	// input amount 
+	var new_amount = document.querySelector('#id_form-0-amount').cloneNode(true); // clone the entire html element 
+	new_amount.name = 'form-'+form.value+'-amount'; // change the parameter name 
+	new_amount.id = 'id_form-'+form.value+'-amount'; // change the parameter id 
+	document.querySelector('#form').appendChild(new_amount); // Select the element with the id form and with appendChild add a new element
+	
+	// Spacing 
+	var p = document.createElement("p"); 
+	document.querySelector('#form').appendChild(p); // this allows to give a spacing 
+	form.value = parseInt(form.value) + 1; // this is the incrementer, which allows to create the form with the corresponding value
+
+	}
+
+// Function that allows to delete the last input of the formset
+	function delete_product_and_amount() {
+	    var Form= document.querySelector('#id_form-TOTAL_FORMS');
+	    Form.value = parseInt(Form.value) - 1;
+
+	    delete_product = '#id_form-'+Form.value+'-product';
+	    delete_amount = '#id_form-'+Form.value+'-amount';
+
+	    document.querySelector(delete_product).remove();
+	    document.querySelector(delete_amount).remove();
+	}
+
+// Function that allows to append five more inputs to the formset.
+function add_product_and_amount_X5(){
+	for (var i = 0; i < 4; i++){
+	var form = document.querySelector('#id_form-TOTAL_FORMS') // Finds and stores the element with ID "id_form-TOTAL_FORMS" in the variable "form"
+
+	// input product
+	var new_product = document.querySelector('#id_form-0-product').cloneNode(true); // clone the entire html element 
+	new_product.name = 'form-'+form.value+'-product'; // change the parameter name 
+	new_product.id = 'id_form-'+form.value+'-product'; // change the parameter id
+	document.querySelector('#form').appendChild(new_product); // Select the element with the id form and with appendChild add a new element
+	
+	// input amount 
+	var new_amount = document.querySelector('#id_form-0-amount').cloneNode(true); // clone the entire html element 
+	new_amount.name = 'form-'+form.value+'-amount'; // change the parameter name 
+	new_amount.id = 'id_form-'+form.value+'-amount'; //change the parameter id
+	document.querySelector('#form').appendChild(new_amount); // Select the element with the id form and with appendChild add a new element
+
+	// Spacing 
+	var p = document.createElement("p"); 
+	document.querySelector('#form').appendChild(p);  // this allows to give a spacing 
+	form.value = parseInt(form.value) + 1; // this is the incrementer, which allows to create the form with the corresponding value
+	}
+}
+
+// Function that allows to delete the last five inputs of the formset.
+function delete_product_and_amount_X5() {
+	for (var i = 0; i < 4; i++) {
+	    var Form = document.querySelector('#id_form-TOTAL_FORMS');
+	    Form.value = parseInt(Form.value) - 1;
+	    delete_product = '#id_form-'+Form.value+'-product';
+	    delete_amount = '#id_form-'+Form.value+'-amount';
+	    document.querySelector(delete_product).remove();
+	    document.querySelector(delete_amount).remove();
+	}
+}
+</script>
+{% endblock %}

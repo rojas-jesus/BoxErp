@@ -1,0 +1,31 @@
+{% extends 'base/list.html' %}
+{% block columns %}
+	<tr>
+		<th scope="col" style="width:5%;">Id</th>
+		<th scope="col" style="width:20%;">Identity Card</th>
+		<th scope="col" style="width:20%;">Name</th>
+		<th scope="col" style="width:20%;">Last Name</th>
+		<th scope="col" style="width:20%;">Phone</th>
+		<th scope="col" style="width:15%;">Actions</th>
+	</tr>
+{% endblock %}
+
+{% block rows %}
+	{% for client in client_deleted_list %}
+	<tr>
+
+		<td> {{ client.id }} </td>
+		<td> {{ client.identity_card_number }} </td>
+		<td> {{ client.first_name }} </td>
+		<td> {{ client.last_name }} </td>
+		<td> {{ client.phone_number }} </td>
+		<td>
+		<a href="{% url 'erp:client-recover' client.id %}" class="btn btn-warning">
+			<i class="fa-solid fa-trash-arrow-up"></i>
+		</a>
+		</td>
+	</tr>
+	{% endfor %}
+{% endblock %}
+
+

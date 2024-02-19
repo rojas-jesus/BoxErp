@@ -1,0 +1,102 @@
+{% load static %}   
+<!-- Navbar -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+	<a href="#" class="brand-link">
+		<span class="brand-text font-weight-light">BoxErp</span>
+	</a>
+	<div class="sidebar">
+		<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+			<div class="image">
+				{% if user.image %}
+					<img src="{{ request.user.image.url }}" class="img-circle elevation-2">
+				{% else %}
+					<img src="{% static 'img/user.png' %}" class="img-circle elevation-2">
+				{% endif %}
+			</div>
+			<div class="info">
+				<a href="#" class="d-block">{{ request.user.username }}</a>
+			</div>
+		</div>
+		<nav class="mt-2">
+			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+				<li class="nav-header">Components</li>
+				<li class="nav-item">
+					<a href="{% url 'erp:category-list' %}" class="nav-link">
+						<i class="fa-solid fa-tags"></i>
+						<p> &nbsp;Categories</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="{% url 'erp:product-list' %}" class="nav-link">
+						<i class="fa-solid fa-boxes-stacked"></i>
+						<p> &nbsp;Products</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="{% url 'erp:client-list' %}" class="nav-link">
+						<i class="fa-solid fa-people-group"></i>
+						<p> &nbsp;Clients</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="{% url 'erp:sale-list' %}" class="nav-link">
+						<i class="fa-solid fa-hand-holding-dollar"></i>
+						<p> &nbsp;Sales</p>
+					</a>
+				</li>
+					{% if user.is_superuser == True %}
+						<li class="nav-header"> Audit and Recovery Records</li>
+					{% endif %}
+
+				<li class="nav-item">
+
+					{% if user.is_superuser == True %}
+					<a href="{% url 'erp:audit-list' %}" class="nav-link">
+						<i class="fa-solid fa-address-book"></i>
+						<p> &nbsp;User Actions</p>
+					</a>
+					{% endif %}
+				</li>
+
+				<li class="nav-item">
+
+					{% if user.is_superuser == True %}
+					<a href="{% url 'erp:category-deleted-list' %}" class="nav-link">
+						<i class="fa-solid fa-trash-arrow-up"></i>
+						<p> &nbsp;Categories Eliminated</p>
+					</a>
+					{% endif %}
+				</li>
+				<li class="nav-item">
+					{% if user.is_superuser == True %}
+					<a href="{% url 'erp:product-deleted-list' %}" class="nav-link">
+						<i class="fa-solid fa-trash-arrow-up"></i>
+						<p> &nbsp;Products Eliminated</p>
+					</a>
+					{% endif %}
+				</li>
+
+				<li class="nav-item">
+
+					{% if user.is_superuser == True %}
+					<a href="{% url 'erp:client-deleted-list' %}" class="nav-link">
+						<i class="fa-solid fa-trash-arrow-up"></i>
+						<p>&nbsp;Clients Eliminated</p>
+					</a>
+					{% endif %}
+
+				</li>
+				<li class="nav-item">
+					{% if user.is_superuser == True %}
+					<a href="{% url 'erp:sale-deleted-list' %}" class="nav-link">
+						<!-- <span class="text-warning"> -->
+							<i class="fa-solid fa-trash-arrow-up"></i>
+						<!-- </span> -->
+						<p> &nbsp;Sales eliminated</p>
+					</a>
+					{% endif %}
+				</li>
+			</ul>
+		</nav>
+	</div>
+</aside>

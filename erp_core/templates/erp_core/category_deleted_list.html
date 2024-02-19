@@ -1,0 +1,24 @@
+{% extends 'base/list.html' %}
+{% block columns %}
+	<tr>
+		<th scope="col" style="width:10%;">Id</th>
+		<th scope="col" style="width:60%;">Name</th>
+		<th scope="col" style="width:30%;">Actions</th>
+	</tr>
+{% endblock %}
+{% block rows %}
+	{% for category in category_deleted_list %}
+	<tr>
+		<td> {{ category.id }} </td>
+		<td> {{ category.name }} </td>
+		<td>
+
+		<a href="{% url 'erp:category-recover' category.id %}" class="btn btn-warning">
+			<i class="fa-solid fa-trash-arrow-up"></i>
+		</a>
+		</td>
+	</tr>
+	{% endfor %}
+{% endblock %}
+
+

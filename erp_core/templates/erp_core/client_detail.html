@@ -1,0 +1,46 @@
+{% extends 'base/body.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<form method="post" action=".">
+
+	<div class="card card-default">
+		<div class="card-header">
+			<h3 class="card-title">
+				<i class="fa-solid fa-eye"></i>
+				{{ title }}
+			</h3>
+		</div>
+		<!-- /.card-header -->
+
+		<div class="card-body">
+			{% csrf_token %}
+			<ul class="list-group">
+				<li class="list-group-item"><b>Identity:</b> {{client_data.identity_card_number}}</li> 
+				<li class="list-group-item"><b>Name:</b> {{client_data.first_name}}</li>
+				<li class="list-group-item"><b>Last Name:</b> {{client_data.last_name}}</li>
+				<li class="list-group-item"><b>Phone:</b> {{client_data.phone_number}}</li>
+				<li class="list-group-item"><b>Date of Birth:</b> {{client_data.date_of_birth}}</li>
+				<li class="list-group-item"><b>Address:</b> {{client_data.address}}</li>
+				<li class="list-group-item"><b>Extra Information:</b>
+					{% if client_data.extra_information %} 
+					{{client_data.extra_information}}</li>
+					{% else %}
+					{{client_data.first_name}} client dont have extra Information</li>
+					{% endif %}
+			</ul>
+		</div>
+		<!-- /.card-body -->
+
+		<div class="card-footer">
+			<a href="{% url 'erp:client-list' %}" class="btn btn-success">
+				<i class="fa-solid fa-circle-left"></i>  &nbsp; Back to client list
+			</a>
+		</div>
+		<!-- /.card-footer -->
+	</div>
+
+</form>
+{% endblock %}
+

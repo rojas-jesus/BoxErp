@@ -1,0 +1,39 @@
+{% extends 'base/body.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<form method="post" action=".">
+<div class="card card-default">
+              <div class="card-header">
+                <h3 class="card-title">
+			<i class="fa-solid fa-trash-can"></i>
+			{# title #}
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+
+		{% csrf_token %}
+		<div class="alert alert-warning alert-dismissible">
+                  <h5><i class="fa-solid fa-question"></i> &nbsp; Importante!</h5>
+		  ¿ Estas Seguro de Continuar con la Eliminacion ? 
+                </div>
+
+              </div>
+              <!-- /.card-body -->
+	      <!-- card footer -->
+		<div class="card-footer">
+			<button type "submit" class="btn btn-primary">
+				<i class="fa-solid fa-check"></i> &nbsp; Confirmar Eliminacion
+			</button>
+
+			<a href="{# url_lista #}" class="btn btn-secondary">
+				<i class="fa-solid fa-xmark"></i> &nbsp; Cancelar
+			</a>
+		</div>
+            </div>
+</form>
+
+{% endblock %}
+

@@ -1,0 +1,30 @@
+{% extends 'base/list.html' %}
+{% block columns %}
+	<tr>
+		<th scope="col" style="width:10%;">Id</th>
+		<th scope="col" style="width:30%;">Name</th>
+		<th scope="col" style="width:10%;">Image</th>
+		<th scope="col" style="width:10%;">Stock</th>
+		<th scope="col" style="width:10%;">Price $</th>
+		<th scope="col" style="width:20%;">Category</th>
+		<th scope="col" style="width:10%;">Actions</th>
+	</tr>
+{% endblock %}
+
+{% block rows %}
+	{% for product in product_deleted_list %}
+	<tr>
+		<td> {{ product.id }} </td>
+		<td> {{ product.name }} </td>
+		<td> {{ product.image }} </td>
+		<td> {{ product.stock }} </td>
+		<td> {{ product.pvp }} </td>
+		<td> {{ product.category }} </td>
+		<td>
+		<a href="{% url 'erp:product-recover' product.id %}" class="btn btn-warning">
+			<i class="fa-solid fa-trash-arrow-up"></i>
+		</a>
+		</td>
+	</tr>
+	{% endfor %}
+{% endblock %}
