@@ -1,4 +1,23 @@
-"# BoxErp" 
+# Overview:
+
+The BoxErp web application is a simple but powerful business management solution. Developed in 2022, it offers a range of functionalities to manage various aspects of a company, all in a simple and easy-to-use interface. Its adaptable design ensures smooth operation on a variety of devices, from desktops to smartphones.
+
+# Features:
+
+• Category Management
+• Product Management
+• Client Management
+• Sales Management
+• Authentication System
+• Authorization System
+• Handling of Deleted Records
+• Audit Section
+
+# Main Technologies Used:
+
+• Django
+• Bootstrap
+• JavaScript
 
 # Getting Started
 First, clone the repository from Github. Then, navigate to the project directory and activate the virtual environment.

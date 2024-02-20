@@ -8,7 +8,7 @@
               <div class="card-header">
                 <h3 class="card-title">
 			<i class="fa-solid fa-trash-can"></i>
-			{# title #}
+			Delete Sale
                 </h3>
               </div>
               <!-- /.card-header -->
@@ -16,8 +16,8 @@
 
 		{% csrf_token %}
 		<div class="alert alert-warning alert-dismissible">
-                  <h5><i class="fa-solid fa-question"></i> &nbsp; Importante!</h5>
-		  ¿ Estas Seguro de Continuar con la Eliminacion ? 
+                  <h5><i class="fa-solid fa-question"></i> &nbsp; Important!</h5> 
+		¿Are you sure you want to continue with the elimination? 
                 </div>
 
               </div>
@@ -25,11 +25,11 @@
 	      <!-- card footer -->
 		<div class="card-footer">
 			<button type "submit" class="btn btn-primary">
-				<i class="fa-solid fa-check"></i> &nbsp; Confirmar Eliminacion
+				<i class="fa-solid fa-check"></i> &nbsp;Confirm deletion
 			</button>
 
-			<a href="{# url_lista #}" class="btn btn-secondary">
-				<i class="fa-solid fa-xmark"></i> &nbsp; Cancelar
+			<a href="{% url 'erp:sale-list' %}" class="btn btn-secondary">
+				<i class="fa-solid fa-xmark"></i> &nbsp;Cancel
 			</a>
 		</div>
             </div>

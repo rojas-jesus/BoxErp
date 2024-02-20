@@ -28,7 +28,7 @@ class Product(SafeDeleteModel):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     image = models.ImageField(upload_to="product/%Y/%m/%d", null=True, blank=True)
     stock = models.PositiveIntegerField(default=1)
-    pvp = models.DecimalField(default=0.00, max_digits=9, decimal_places=2)
+    pvp = models.DecimalField(default=0.00, max_digits=9, decimal_places=2, verbose_name="price")
 
     def __str__(self):
         return f"{self.name} | ${self.pvp} | {self.stock} ud(s)"

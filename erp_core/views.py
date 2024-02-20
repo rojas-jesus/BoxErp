@@ -37,6 +37,11 @@ class AuditListView(LoginRequiredMixin, ListView):
     model = CRUDEvent
     template_name = "erp_core/audit_list.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Audit"
+        return context
+
 class CategoryDeletedListView(LoginRequiredMixin, ListView):
     template_name = "erp_core/category_deleted_list.html"
     context_object_name = "category_deleted_list"
@@ -142,31 +147,30 @@ class SaleRecoverView(LoginRequiredMixin,View):
 @login_required
 def panel_main_view(request):
     if Product.objects.exists():
-        amount_total_products = Product.objects.count()
+        quantity_products = Product.objects.count()
     else:
-        amount_total_products = 0
+        quantity_products = 0
 
     if Sale.objects.exists():
-        amount_of_all_sales = Sale.objects.count()
+        all_sales = Sale.objects.count()
         last_sale = Sale.objects.last()
-        last_sale_total = last_sale.total
-        amount_of_all_sales_current_date = Sale.objects.filter(
+        last_sale = last_sale.total
+        all_sales_current_date = Sale.objects.filter(
             date__gte=date.today()
         ).count()  
     else:
-        amount_of_all_sales = 0
+        all_sales = 0
         last_sale = 0
-        last_sale_total = 0
-        amount_of_all_sales_current_date = 0
+        all_sales_current_date = 0
 
     title = "Main Panel"
 
     context = {
         "title": title,
-        "amount_total_products": amount_total_products,
-        "amount_of_all_sales": amount_of_all_sales,
-        "last_sale_total": last_sale_total,
-        "amount_of_all_sales_current_date": amount_of_all_sales_current_date,
+        "quantity_products": quantity_products,
+        "all_sales": all_sales,
+        "last_sale": last_sale,
+        "all_sales_current_date": all_sales_current_date,
     }
     return render(request, "erp_core/panel_main.html", context)
 

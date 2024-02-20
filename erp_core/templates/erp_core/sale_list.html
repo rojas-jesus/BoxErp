@@ -3,10 +3,8 @@
 
 {% block columns %}
 <tr>
-	<th scope="col" style="width:5%;">Id</th>
-	<th scope="col" style="width:15%;">Client Identity Card</th>
-	<th scope="col" style="width:15%;">Client First Name</th>
-	<th scope="col" style="width:15%;">Client Last Name</th>
+	<th scope="col" style="width:10%;">Id</th>
+	<th scope="col" style="width:40%;">Client</th>
 	<th scope="col" style="width:20%;">Date</th>
 	<th scope="col" style="width:20%;">Total</th>
 	<th scope="col" style="width:10%;">Actions</th>
@@ -18,8 +16,6 @@
 <tr>
 	<td>{{ sale.id }}</td>
 	<td>{{ sale.client }}</td>
-	<td>{{ sale.client.first_name }}</td>
-	<td>{{ sale.client.last_name }}</td>
 	<td>{{ sale.date | date:"d/m/y , P" }}</td> <!-- <fecha> , <hora> -->
 	<td>${{ sale.total }}</td>
 	<td>
