@@ -65,9 +65,11 @@ Run the development server:
     $ python manage.py runserver
 
 # Maintenance Status
+
 This repository is no longer actively maintained. The project is in a stable state.
 
 # Testing
+
 Functional and non-functional tests have been conducted to ensure the quality and reliability of the application.
 
 Note: The unit test suite is limited and only covers a small portion of the core app models and views. Despite this limitation, the application is functioning correctly.
