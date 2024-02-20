@@ -28,13 +28,12 @@ Note: While the BoxErp web application includes comprehensive features for manag
 
 ![BoxErp2](https://github.com/rojas-jesus/BoxErp/assets/148916557/e360ea70-2a22-40e4-a3c4-5e07d57e4de7)
 
-• Mp4 (High-quality preview)
+• High-quality preview
 
 
 https://github.com/rojas-jesus/BoxErp/assets/148916557/612b0aa4-0238-412b-b970-d30dc5ff8fb6
 
-
-https://github.com/rojas-jesus/BoxErp/assets/148916557/fd78b0b9-231f-4c98-84df-b543344086c4
+![products](https://github.com/rojas-jesus/BoxErp/assets/148916557/40d5f24a-72f0-4124-9f4c-86d981dc5797)
 
 
 
